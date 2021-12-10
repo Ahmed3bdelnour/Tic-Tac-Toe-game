@@ -1,23 +1,47 @@
-<div id="statusArea" className="status">
-  Next player: <span>{{ nextPlayer }}</span>
-</div>
-<div id="winnerArea" className="winner">
-  Winner: <span>{{ winner }}</span>
-</div>
-<button (click)="resetGame()">Reset</button>
-<section>
-  <div
-    class="row"
-    *ngFor="let row of ' '.repeat(boardWidth).split(''); let rowIndex = index"
-  >
-    <button
-      *ngFor="let col of ' '.repeat(boardWidth).split(''); let colIndex = index"
-      (click)="handleClickCell(rowIndex, colIndex)"
-      [disabled]="winner !== 'None'"
-      class="square"
-      style="width: 40px; height: 40px"
+<div class="app-wrapper">
+  <div class="next-player-wrapper">
+    Next player:
+    <span
+      [class]="{
+        'player-one': nextPlayer === 'X',
+        'player-two': nextPlayer === 'O'
+      }"
+      >{{ nextPlayer }}</span
     >
-      {{ this.board[rowIndex][colIndex] }}
-    </button>
   </div>
-</section>
+
+  <div class="winner-wrapper">
+    Winner: <span>{{ winner }}</span>
+  </div>
+
+  <div class="celebrating-img-wrapper" *ngIf="winner !== 'None'">
+    <img src="./assets/images/celebrating.png" />
+  </div>
+
+  <div class="reset-wrapper">
+    <button (click)="initOrResetGame()">Reset</button>
+  </div>
+
+  <div class="board-wrapper">
+    <div
+      class="row"
+      *ngFor="let row of ' '.repeat(boardWidth).split(''); let rowIndex = index"
+    >
+      <button
+        *ngFor="
+          let col of ' '.repeat(boardWidth).split('');
+          let colIndex = index
+        "
+        (click)="handleClickCell(rowIndex, colIndex)"
+        [disabled]="winner !== 'None' || !!getCellValue(rowIndex, colIndex)"
+        [class]="{
+          cell: true,
+          'player-one': getCellValue(rowIndex, colIndex) === 'X',
+          'player-two': getCellValue(rowIndex, colIndex) === 'O'
+        }"
+      >
+        {{ getCellValue(rowIndex, colIndex) }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,94 @@
-.row {
+.app-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
+
+  button {
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .next-player-wrapper,
+  .winner-wrapper,
+  .reset-wrapper,
+  .celebrating-img-wrapper {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .next-player-wrapper,
+  .winner-wrapper {
+    span {
+      color: white;
+      height: 25px;
+      display: inline-block;
+      text-align: center;
+      padding: 4px;
+    }
+  }
+
+  .next-player-wrapper {
+    span {
+      width: 25px;
+    }
+  }
+
+  .winner-wrapper {
+    span {
+      background: black;
+      width: 65px;
+    }
+  }
+
+  .celebrating-img-wrapper {
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .reset-wrapper {
+    button {
+      font-size: 16px;
+      color: white;
+      background: darkgoldenrod;
+      height: 40px;
+      width: 85px;
+      border: none;
+      outline: none;
+      box-shadow: 2px 3px 5px #604709;
+    }
+  }
+
+  .board-wrapper {
+    .row {
+      display: flex;
+
+      .cell {
+        width: 75px;
+        height: 75px;
+
+        &.player-one,
+        &.player-two {
+          color: white;
+          font-size: 20px;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .player-one {
+    background: crimson;
+  }
+
+  .player-two {
+    background: darkcyan;
+  }
 }
