@@ -53,6 +53,10 @@
         [disabled]="winner !== 'None' || !!getCellValue(rowIndex, colIndex)"
         [class]="{
           cell: true,
+          large: boardWidth > 2 && boardWidth < 7,
+          medium: boardWidth > 6 && boardWidth < 10,
+          small: boardWidth > 9 && boardWidth < 13,
+          'x-small': boardWidth > 12 && boardWidth < 16,
           'player-one': getCellValue(rowIndex, colIndex) === 'X',
           'player-two': getCellValue(rowIndex, colIndex) === 'O'
         }"

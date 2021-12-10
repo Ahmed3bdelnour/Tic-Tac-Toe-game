@@ -162,8 +162,8 @@ export class AppComponent {
   handleSetBoardWidth(boardWidthValue: string) {
     const boardWidth = +boardWidthValue;
 
-    if (boardWidth < 3) {
-      this.errorMessage = 'Board size must be greater than or equal 3';
+    if (boardWidth < 3 || boardWidth > 15) {
+      this.errorMessage = 'Board size must be from 3 to 15';
       return;
     }
 

@@ -79,8 +79,25 @@
       display: flex;
 
       .cell {
-        width: 75px;
-        height: 75px;
+        &.large {
+          width: 75px;
+          height: 75px;
+        }
+
+        &.medium {
+          width: 55px;
+          height: 55px;
+        }
+
+        &.small {
+          width: 40px;
+          height: 40px;
+        }
+
+        &.x-small {
+          width: 34px;
+          height: 34px;
+        }
 
         &.player-one,
         &.player-two {
