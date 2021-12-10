@@ -19,13 +19,15 @@ export class AppComponent {
   secondPlayer: Player;
   nextPlayer: Player;
   winner: Winner;
+  errorMessage: string;
 
   constructor() {
-    this.initOrResetGame();
+    this.initOrResetGame(3);
+    this.errorMessage = '';
   }
 
-  initOrResetGame(): void {
-    this.boardWidth = 3;
+  initOrResetGame(boardWidth?: number): void {
+    if (boardWidth !== undefined) this.boardWidth = boardWidth;
 
     this.board = [];
 
@@ -52,7 +54,7 @@ export class AppComponent {
         : this.firstPlayer;
   }
 
-  getCellValue(rowIndex: number, colIndex: number): Player{
+  getCellValue(rowIndex: number, colIndex: number): Player {
     return this.board[rowIndex][colIndex] as Player;
   }
 
@@ -155,5 +157,18 @@ export class AppComponent {
       CellsConcatenation === completeEntryForFirstPlayer ||
       CellsConcatenation === completeEntryForSecondPlayer
     );
+  }
+
+  handleSetBoardWidth(boardWidthValue: string) {
+    const boardWidth = +boardWidthValue;
+
+    if (boardWidth < 3) {
+      this.errorMessage = 'Board size must be greater than or equal 3';
+      return;
+    }
+
+    this.errorMessage = '';
+    this.boardWidth = boardWidth;
+    this.initOrResetGame();
   }
 }

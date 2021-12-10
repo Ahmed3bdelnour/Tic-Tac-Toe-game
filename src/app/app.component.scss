@@ -13,6 +13,7 @@
 
   .next-player-wrapper,
   .winner-wrapper,
+  .board-size-input-wrapper,
   .reset-wrapper,
   .celebrating-img-wrapper {
     font-size: 22px;
@@ -49,6 +50,14 @@
 
     img {
       width: 100%;
+    }
+  }
+
+  .board-size-wrapper {
+    .error-message {
+      color: red;
+      text-align: center;
+      margin: 15px;
     }
   }
 

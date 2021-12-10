@@ -18,6 +18,23 @@
     <img src="./assets/images/celebrating.png" />
   </div>
 
+  <div class="board-size-wrapper">
+    <div class="board-size-input-wrapper">
+      <label for="board-size">Board size </label>
+      <input
+        type="number"
+        id="board-size"
+        [ngModel]="boardWidth"
+        #boardWidthInput="ngModel"
+        (change)="handleSetBoardWidth(boardWidthInput.control.value)"
+      />
+    </div>
+
+    <div class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+
   <div class="reset-wrapper">
     <button (click)="initOrResetGame()">Reset</button>
   </div>
